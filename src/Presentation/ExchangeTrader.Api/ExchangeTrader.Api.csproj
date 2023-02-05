@@ -9,15 +9,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.4.0" />
+    <PackageReference Include="Serilog.Sinks.MongoDB" Version="5.3.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\ExchangeTrader.App\ExchangeTrader.App.csproj" />
     <ProjectReference Include="..\..\Core\ExchangeTrader.Domain\ExchangeTrader.Domain.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\ExchangeTrader.Integration.DI\ExchangeTrader.Integration.DI.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\ExchangeTrader.Infrastructure\ExchangeTrader.Integration.Fixer.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\ExchangeTrader.Integration.ExchangeRatesApi\ExchangeTrader.Integration.ExchangeRatesApi.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\ExchangeTrader.Redis\ExchangeTrader.Caching.Redis.csproj" />
   </ItemGroup>
 
 </Project>

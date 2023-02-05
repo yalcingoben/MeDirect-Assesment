@@ -1,14 +1,8 @@
-﻿using ExchangeTrader.App.Abstractions.Services;
-using ExchangeTrader.App.Configurations;
-using ExchangeTrader.App.Dtos;
+﻿using ExchangeTrader.App.Abstractions.Exchange;
+using ExchangeTrader.App.Abstractions.Exchange.Dtos;
+using ExchangeTrader.App.Abstractions.Exchange.Exceptions;
 using ExchangeTrader.Integration.ExchangeRatesApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace ExchangeTrader.Integration.ExchangeRatesApi
 {
@@ -24,47 +18,29 @@ namespace ExchangeTrader.Integration.ExchangeRatesApi
             _options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
         }
 
-        public async Task<ExchangeRateDto> GetRates(string baseCurrency)
+        public async Task<ExchangeRate> GetRates(string baseCurrency, CancellationToken cancellationToken)
         {
             var request = new HttpRequestMessage(HttpMethod.Get,
                 $"latest?base={baseCurrency}");
 
             var client = httpClientFactory.CreateClient("exchangeRateApi");
-            var response = await client.SendAsync(request);
+            var response = await client.SendAsync(request, cancellationToken);
 
             if (response.IsSuccessStatusCode)
             {
                 using var responseStream = await response.Content.ReadAsStreamAsync();
-                var latestResponse = await JsonSerializer.DeserializeAsync<LatestResponse>(responseStream, _options);
+                var latestResponse = await JsonSerializer.DeserializeAsync<LatestResponse>(responseStream, _options, cancellationToken);
                 if (latestResponse != null && latestResponse.Success)
                 {
-                    return new ExchangeRateDto
+                    return new ExchangeRate
                     {
                         Date = latestResponse.Date,
-                        Rates = latestResponse.Rates.Select(rate => new RateDto { Code = rate.Key, Value = rate.Value }).ToList()
+                        Rates = latestResponse.Rates.Select(rate => new Rate { Code = rate.Key, Value = rate.Value }).ToList()
                     };
                 }
+                throw new IntegrationFaultException("The error occurred while exchange rates were deserializing.", (int)response.StatusCode, "ExchangeRatesApi");
             }
-            return new ExchangeRateDto();
-        }
-
-        public async Task<IEnumerable<SymbolDto>> GetSymbols()
-        {
-            var request = new HttpRequestMessage(HttpMethod.Get, "symbols");
-
-            var client = httpClientFactory.CreateClient("exchangeRateApi");
-            var response = await client.SendAsync(request);
-
-            if (response.IsSuccessStatusCode)
-            {
-                using var responseStream = await response.Content.ReadAsStreamAsync();
-                var symbolsResponse = await JsonSerializer.DeserializeAsync<SymbolsResponse>(responseStream, _options);
-                if(symbolsResponse != null && symbolsResponse.Success) 
-                { 
-                    return symbolsResponse.Symbols.Select(symbol => new SymbolDto { Code = symbol.Key, Name = symbol.Value });
-                }
-            }
-            return Enumerable.Empty<SymbolDto>();
-        }
+            throw new IntegrationFaultException("The error occurred while exchange rates were getting.", (int)response.StatusCode, "ExchangeRatesApi");
+        }        
     }
 }

@@ -7,12 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ExchangeTrader.Domain\ExchangeTrader.Domain.csproj" />
+    <Compile Remove="Abstractions\**" />
+    <Compile Remove="Features\Symbol\**" />
+    <EmbeddedResource Remove="Abstractions\**" />
+    <EmbeddedResource Remove="Features\Symbol\**" />
+    <None Remove="Abstractions\**" />
+    <None Remove="Features\Symbol\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Rate\Command\" />
-    <Folder Include="Features\Trade\" />
+    <ProjectReference Include="..\ExchangeTrader.App.Abstractions\ExchangeTrader.App.Abstractions.csproj" />
+    <ProjectReference Include="..\ExchangeTrader.Domain\ExchangeTrader.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,8 +26,11 @@
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.4.0" />
     <PackageReference Include="MediatR" Version="11.1.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.2" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
   </ItemGroup>
 
 </Project>

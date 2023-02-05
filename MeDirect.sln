@@ -13,19 +13,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{415B10A7-F1D7-4DF4-B96B-EDEF2410AAA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeTrader.Domain", "src\Core\ExchangeTrader.Domain\ExchangeTrader.Domain.csproj", "{79095E51-1DBB-497A-9881-B68051A1F0D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeTrader.Domain", "src\Core\ExchangeTrader.Domain\ExchangeTrader.Domain.csproj", "{79095E51-1DBB-497A-9881-B68051A1F0D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeTrader.App", "src\Core\ExchangeTrader.App\ExchangeTrader.App.csproj", "{AD07A503-EE3A-44C2-A887-2B30B3FC4AE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeTrader.App", "src\Core\ExchangeTrader.App\ExchangeTrader.App.csproj", "{AD07A503-EE3A-44C2-A887-2B30B3FC4AE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeTrader.Integration.Fixer", "src\Infrastructure\ExchangeTrader.Infrastructure\ExchangeTrader.Integration.Fixer.csproj", "{EE806360-EF1C-4177-B2DA-E8BFF5FCEC99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeTrader.Integration.Fixer", "src\Infrastructure\ExchangeTrader.Infrastructure\ExchangeTrader.Integration.Fixer.csproj", "{EE806360-EF1C-4177-B2DA-E8BFF5FCEC99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeTrader.Persistence", "src\Infrastructure\ExchangeTrader.Persistence\ExchangeTrader.Persistence.csproj", "{1DE42C00-A990-4037-B190-D4DF8BA56FD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeTrader.Persistence", "src\Infrastructure\ExchangeTrader.Persistence\ExchangeTrader.Persistence.csproj", "{1DE42C00-A990-4037-B190-D4DF8BA56FD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeTrader.Api", "src\Presentation\ExchangeTrader.Api\ExchangeTrader.Api.csproj", "{746FD170-3799-411A-B35E-99F70B66907E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeTrader.Api", "src\Presentation\ExchangeTrader.Api\ExchangeTrader.Api.csproj", "{746FD170-3799-411A-B35E-99F70B66907E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeTrader.Integration.ExchangeRatesApi", "src\Infrastructure\ExchangeTrader.Integration.ExchangeRatesApi\ExchangeTrader.Integration.ExchangeRatesApi.csproj", "{82E3D768-83C5-4AE3-9E2B-8DAF3DBB55C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeTrader.Integration.ExchangeRatesApi", "src\Infrastructure\ExchangeTrader.Integration.ExchangeRatesApi\ExchangeTrader.Integration.ExchangeRatesApi.csproj", "{82E3D768-83C5-4AE3-9E2B-8DAF3DBB55C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeTrader.Integration.DI", "src\Infrastructure\ExchangeTrader.Integration.DI\ExchangeTrader.Integration.DI.csproj", "{7498D5F9-BC5D-4206-BD96-1A761C36ED2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeTrader.App.Abstractions", "src\Core\ExchangeTrader.App.Abstractions\ExchangeTrader.App.Abstractions.csproj", "{C15456D1-9E05-4648-AF60-D8398ED3300A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeTrader.Caching.Redis", "src\Infrastructure\ExchangeTrader.Redis\ExchangeTrader.Caching.Redis.csproj", "{E16C71F7-E200-4E97-8235-F5A501FCDD48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,10 +59,14 @@ Global
 		{82E3D768-83C5-4AE3-9E2B-8DAF3DBB55C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82E3D768-83C5-4AE3-9E2B-8DAF3DBB55C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82E3D768-83C5-4AE3-9E2B-8DAF3DBB55C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7498D5F9-BC5D-4206-BD96-1A761C36ED2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7498D5F9-BC5D-4206-BD96-1A761C36ED2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7498D5F9-BC5D-4206-BD96-1A761C36ED2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7498D5F9-BC5D-4206-BD96-1A761C36ED2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C15456D1-9E05-4648-AF60-D8398ED3300A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C15456D1-9E05-4648-AF60-D8398ED3300A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C15456D1-9E05-4648-AF60-D8398ED3300A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C15456D1-9E05-4648-AF60-D8398ED3300A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E16C71F7-E200-4E97-8235-F5A501FCDD48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E16C71F7-E200-4E97-8235-F5A501FCDD48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E16C71F7-E200-4E97-8235-F5A501FCDD48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E16C71F7-E200-4E97-8235-F5A501FCDD48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,7 +81,8 @@ Global
 		{1DE42C00-A990-4037-B190-D4DF8BA56FD1} = {3DCD2345-D4CF-4C12-8B99-AB886E4B34D9}
 		{746FD170-3799-411A-B35E-99F70B66907E} = {415B10A7-F1D7-4DF4-B96B-EDEF2410AAA2}
 		{82E3D768-83C5-4AE3-9E2B-8DAF3DBB55C3} = {3DCD2345-D4CF-4C12-8B99-AB886E4B34D9}
-		{7498D5F9-BC5D-4206-BD96-1A761C36ED2B} = {3DCD2345-D4CF-4C12-8B99-AB886E4B34D9}
+		{C15456D1-9E05-4648-AF60-D8398ED3300A} = {7E54968C-D709-41BE-A918-D1798AFC0522}
+		{E16C71F7-E200-4E97-8235-F5A501FCDD48} = {3DCD2345-D4CF-4C12-8B99-AB886E4B34D9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CE46B170-5CA1-4E1B-AEEC-14AD1BDD40E6}
