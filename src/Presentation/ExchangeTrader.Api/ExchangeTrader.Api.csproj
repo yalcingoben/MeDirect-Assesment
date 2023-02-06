@@ -4,13 +4,16 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNetCoreRateLimit.Redis" Version="2.0.0" />
+    <PackageReference Include="AspNetCoreRateLimit2" Version="1.0.8" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="7.0.2" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
     <PackageReference Include="Serilog.Settings.Configuration" Version="3.4.0" />
@@ -20,7 +23,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\ExchangeTrader.App\ExchangeTrader.App.csproj" />
-    <ProjectReference Include="..\..\Core\ExchangeTrader.Domain\ExchangeTrader.Domain.csproj" />
     <ProjectReference Include="..\..\Infrastructure\ExchangeTrader.Infrastructure\ExchangeTrader.Integration.Fixer.csproj" />
     <ProjectReference Include="..\..\Infrastructure\ExchangeTrader.Integration.ExchangeRatesApi\ExchangeTrader.Integration.ExchangeRatesApi.csproj" />
     <ProjectReference Include="..\..\Infrastructure\ExchangeTrader.Redis\ExchangeTrader.Caching.Redis.csproj" />

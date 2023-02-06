@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ExchangeTrader.Integration.ExchangeRatesApi.Models
+﻿namespace ExchangeTrader.Integration.ExchangeRatesApi.Models
 {
-    internal class LatestResponse
+    public class LatestResponse
     {
         public bool Success { get; set; }
         public string Base { get; set; }

@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ExchangeTrader.App.Abstractions\ExchangeTrader.App.Abstractions.csproj" />
-    <ProjectReference Include="..\ExchangeTrader.Domain\ExchangeTrader.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

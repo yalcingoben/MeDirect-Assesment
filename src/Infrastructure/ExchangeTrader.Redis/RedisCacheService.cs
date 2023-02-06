@@ -18,19 +18,9 @@ namespace ExchangeTrader.Redis
         public async Task Clear(string key, CancellationToken cancellationToken)
         {
             await _cache.KeyDeleteAsync(key);
-        }
+        }        
 
-        public void ClearAll(CancellationToken cancellationToken)
-        {
-            var endpoints = _redisCon.GetEndPoints(true);
-            foreach (var endpoint in endpoints)
-            {
-                var server = _redisCon.GetServer(endpoint);
-                server.FlushAllDatabases();
-            }
-        }
-
-        public async Task<T> GetOrAddAsync<T>(string key, Func<Task<T>> action, TimeSpan expireTime, CancellationToken cancellationToken) where T : class
+        public async Task<T> GetOrAddAsync<T>(string key, Func<Task<T>> action, TimeSpan? expireTime, CancellationToken cancellationToken) where T : class
         {
             var result = await _cache.StringGetAsync(key);
             if (result.IsNull)
@@ -46,12 +36,12 @@ namespace ExchangeTrader.Redis
             return await _cache.StringGetAsync(key);
         }
 
-        public async Task<bool> SetValueAsync(string key, string value, TimeSpan expireTime, CancellationToken cancellationToken)
+        public async Task<bool> SetValueAsync(string key, string value, TimeSpan? expireTime, CancellationToken cancellationToken)
         {
             return await _cache.StringSetAsync(key, value, expireTime);
         }
 
-        public T GetOrAdd<T>(string key, Func<T> action, TimeSpan expireTime, CancellationToken cancellationToken) where T : class
+        public T GetOrAdd<T>(string key, Func<T> action, TimeSpan? expireTime, CancellationToken cancellationToken) where T : class
         {
             var result = _cache.StringGet(key);
             if (result.IsNull)

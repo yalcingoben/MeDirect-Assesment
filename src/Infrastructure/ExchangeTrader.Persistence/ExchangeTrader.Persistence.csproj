@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\ExchangeTrader.App\ExchangeTrader.App.csproj" />
-    <ProjectReference Include="..\..\Core\ExchangeTrader.Domain\ExchangeTrader.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

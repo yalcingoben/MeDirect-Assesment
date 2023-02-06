@@ -8,6 +8,8 @@ using Serilog;
 using ExchangeTrader.App.Abstractions.Exchange.Enums;
 using ExchangeTrader.Integration.ExchangeRatesApi.DependencyInjection;
 using Microsoft.AspNetCore.Mvc;
+using ExchangeTrader.Api.Extensions;
+using AspNetCoreRateLimit;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +29,7 @@ else
 }
 
 builder.Services.AddRedis(configuration);
+builder.Services.AddRateLimiting(configuration);
 builder.Services.AddApplicationRegistration(configuration);
 
 builder.Services.AddControllers();
@@ -40,6 +43,7 @@ builder.Host.UseSerilog((context, config) => config.ReadFrom.Configuration(conte
 
 var app = builder.Build();
 app.UseMiddleware<ExceptionMiddleware>();
+app.UseClientRateLimiting();
 
 if (!app.Environment.IsDevelopment())
 {    

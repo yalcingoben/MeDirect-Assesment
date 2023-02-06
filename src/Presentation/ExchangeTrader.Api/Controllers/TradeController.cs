@@ -17,7 +17,7 @@ namespace ExchangeTrader.Api.Controllers
         }
         [HttpPost]
         [ServiceFilter(typeof(AuthFilter))]
-        public async Task<ExchangeTradeResponse> Get([FromBody] ExchangeTradeCommand command)
+        public async Task<ExchangeTradeResponse> Trade([FromBody] ExchangeTradeCommand command)
         {
             return await _mediator.Send(command);
         }

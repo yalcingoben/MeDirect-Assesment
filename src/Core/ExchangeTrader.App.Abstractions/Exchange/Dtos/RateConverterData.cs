@@ -2,7 +2,7 @@
 {
     public class RateConverterData
     {
-        public string BaseCurrency { get; set; }
+        public string SystemCurrency { get; set; }
         public IEnumerable<Rate> Rates { get; set; }
     }
 }

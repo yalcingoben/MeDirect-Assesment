@@ -37,13 +37,13 @@ namespace ExchangeTrader.App.Features.Trade.Command
         public async Task<ExchangeTradeResponse> Handle(ExchangeTradeCommand request, CancellationToken cancellationToken)
         {
             var ratesQueryResponse = await mediator.Send(new GetRatesQuery { BaseCurrency = exchangeCurrencyConfiguration.BaseSystemCurrency });
-            ArgumentNullException.ThrowIfNull(nameof(ratesQueryResponse));
+            ArgumentNullException.ThrowIfNull(ratesQueryResponse, nameof(ratesQueryResponse));
             ThrowExceptionIfNotSupported(request.Base, ratesQueryResponse);
             ThrowExceptionIfNotSupported(request.Target, ratesQueryResponse);
 
             var rateConverterData = new RateConverterData
             {
-                BaseCurrency = ratesQueryResponse.BaseCurrency,
+                SystemCurrency = ratesQueryResponse.BaseCurrency,
                 Rates = ratesQueryResponse.Rates.Select(x => new Abstractions.Exchange.Dtos.Rate
                 {
                     Code = x.Code,
@@ -54,7 +54,7 @@ namespace ExchangeTrader.App.Features.Trade.Command
             var conversionRate = rateConverterService.Convert(request.Base, request.Target, rateConverterData);
             var convertedAmount = conversionRate * request.Amount;
             if (conversionRate > 0 && httpContextAccessor.HttpContext.Items.TryGetValue("apiKey", out var value))
-            {
+            {   
                 _ = Task.Run(() =>
                 {
                     logger.LogInformation("{apiKey}{base}{target}{amount}{conversionRate}{convertedAmount}",
@@ -68,7 +68,7 @@ namespace ExchangeTrader.App.Features.Trade.Command
         private void ThrowExceptionIfNotSupported(string currency, GetRatesQueryResponse queryResponse)
         {
             if(!queryResponse.BaseCurrency.EqualsInvariantCulture(currency) && !queryResponse.Rates.Any(x => x.Code.EqualsInvariantCulture(currency)))
-                throw new CurrencyNotSupportedException($"{currency} is not supported currency");
+                throw new CurrencyNotSupportedException(currency);
         }
     }
 }

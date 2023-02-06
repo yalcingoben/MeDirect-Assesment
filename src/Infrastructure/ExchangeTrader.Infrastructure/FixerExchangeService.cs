@@ -20,19 +20,8 @@ namespace ExchangeTrader.Integration.Fixer
 
         public async Task<ExchangeRate> GetRates(string baseCurrency, CancellationToken cancellationToken)
         {
-            //TODO: remove before production
-            //return new ExchangeRate
-            //{
-            //    Date = DateTime.Now,
-            //    Rates = new List<Rate>
-            //    {
-            //        new Rate{ Code = "TRY", Value = 20.37 },
-            //        new Rate{ Code = "USD", Value = 1.08 }
-            //    }
-            //};
-
             var request = new HttpRequestMessage(HttpMethod.Get,
-                $"latest1?base={baseCurrency}");
+                $"latest?base={baseCurrency}");
 
             var client = httpClientFactory.CreateClient("fixer");
             var response = await client.SendAsync(request, cancellationToken);

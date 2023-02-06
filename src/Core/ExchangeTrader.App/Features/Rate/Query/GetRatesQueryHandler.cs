@@ -32,8 +32,9 @@ namespace ExchangeTrader.App.Features.Rate.Query
                 () => { return _exchangeService.GetRates(request.BaseCurrency, cancellationToken); },
                 _exchangeCurrencyConfiguration.CurrencyRateTimeout, 
                 cancellationToken);
-            
-            ArgumentNullException.ThrowIfNull(result.Rates, nameof(Rate));
+
+            ArgumentNullException.ThrowIfNull(result, nameof(result));
+            ArgumentNullException.ThrowIfNull(result.Rates, nameof(result.Rates));            
             return new GetRatesQueryResponse
             {
                 BaseCurrency = baseCurrency,
