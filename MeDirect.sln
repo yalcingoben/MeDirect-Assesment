@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeTrader.App", "src\Core\ExchangeTrader.App\ExchangeTrader.App.csproj", "{AD07A503-EE3A-44C2-A887-2B30B3FC4AE2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeTrader.Integration.Fixer", "src\Infrastructure\ExchangeTrader.Infrastructure\ExchangeTrader.Integration.Fixer.csproj", "{EE806360-EF1C-4177-B2DA-E8BFF5FCEC99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeTrader.Integration.Fixer", "src\Infrastructure\ExchangeTrader.Integration.Fixer\ExchangeTrader.Integration.Fixer.csproj", "{EE806360-EF1C-4177-B2DA-E8BFF5FCEC99}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeTrader.Api", "src\Presentation\ExchangeTrader.Api\ExchangeTrader.Api.csproj", "{746FD170-3799-411A-B35E-99F70B66907E}"
 EndProject
@@ -23,15 +23,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeTrader.Integration.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeTrader.App.Abstractions", "src\Core\ExchangeTrader.App.Abstractions\ExchangeTrader.App.Abstractions.csproj", "{C15456D1-9E05-4648-AF60-D8398ED3300A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeTrader.Caching.Redis", "src\Infrastructure\ExchangeTrader.Redis\ExchangeTrader.Caching.Redis.csproj", "{E16C71F7-E200-4E97-8235-F5A501FCDD48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeTrader.Caching.Redis", "src\Infrastructure\ExchangeTrader.Caching.Redis\ExchangeTrader.Caching.Redis.csproj", "{E16C71F7-E200-4E97-8235-F5A501FCDD48}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeTrader.App.Tests", "test\ExchangeTrader.App.Tests\ExchangeTrader.App.Tests.csproj", "{89A616C7-AA02-417F-8DC1-DDA4400CD3D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeTrader.Caching.Redis.Tests", "test\ExchangeTrader.Caching.Redis\ExchangeTrader.Caching.Redis.Tests.csproj", "{D894307C-6BD5-446B-B8F3-44A575C99403}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeTrader.Caching.Redis.Tests", "test\ExchangeTrader.Caching.Redis.Tests\ExchangeTrader.Caching.Redis.Tests.csproj", "{D894307C-6BD5-446B-B8F3-44A575C99403}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeTrader.Integration.ExchangeRatesApi.Tests", "test\ExchangeTrader.Integration.ExchangeRatesApi.Tests\ExchangeTrader.Integration.ExchangeRatesApi.Tests.csproj", "{DC16798E-39C5-4B96-BA8E-BCDCD3044230}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeTrader.Integration.Fixer.Tests", "test\ExchangeTrader.Integration.Fixer\ExchangeTrader.Integration.Fixer.Tests.csproj", "{0CD1FD1E-F950-4692-A647-4F1DFA8FFFEC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeTrader.Integration.Fixer.Tests", "test\ExchangeTrader.Integration.Fixer.Tests\ExchangeTrader.Integration.Fixer.Tests.csproj", "{0CD1FD1E-F950-4692-A647-4F1DFA8FFFEC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeTrader.Api.Tests", "test\ExchangeTrader.Api.Tests\ExchangeTrader.Api.Tests.csproj", "{CEE96809-D00E-4E0B-AB40-F8DE754C283E}"
 EndProject

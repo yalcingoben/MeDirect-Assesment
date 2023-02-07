@@ -23,9 +23,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\ExchangeTrader.App\ExchangeTrader.App.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\ExchangeTrader.Infrastructure\ExchangeTrader.Integration.Fixer.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\ExchangeTrader.Caching.Redis\ExchangeTrader.Caching.Redis.csproj" />
     <ProjectReference Include="..\..\Infrastructure\ExchangeTrader.Integration.ExchangeRatesApi\ExchangeTrader.Integration.ExchangeRatesApi.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\ExchangeTrader.Redis\ExchangeTrader.Caching.Redis.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\ExchangeTrader.Integration.Fixer\ExchangeTrader.Integration.Fixer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="mongo-entrypoint\" />
   </ItemGroup>
 
 </Project>

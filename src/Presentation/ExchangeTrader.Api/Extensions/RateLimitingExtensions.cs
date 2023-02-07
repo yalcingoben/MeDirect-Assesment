@@ -1,8 +1,6 @@
 ﻿using AspNetCoreRateLimit;
 using AspNetCoreRateLimit.Redis;
 using ExchangeTrader.Caching.Redis;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace ExchangeTrader.Api.Extensions
 {

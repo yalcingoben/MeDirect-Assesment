@@ -1,9 +1,8 @@
-using ExchangeTrader.Redis;
 using Moq;
 using StackExchange.Redis;
 using System.Text.Json;
 
-namespace ExchangeTrader.Caching.Redis
+namespace ExchangeTrader.Caching.Redis.Tests
 {
     public class RedisCacheServiceTest
     {
@@ -28,7 +27,7 @@ namespace ExchangeTrader.Caching.Redis
             var cacheService = new RedisCacheService(_redisCon.Object);
             await cacheService.Clear(key, CancellationToken.None);
             //Assert
-            _cache.Verify(x=> x.KeyDeleteAsync(It.IsAny<RedisKey>(), It.IsAny<CommandFlags>()), Times.Once());
+            _cache.Verify(x => x.KeyDeleteAsync(It.IsAny<RedisKey>(), It.IsAny<CommandFlags>()), Times.Once());
         }
 
         [Fact]
@@ -40,14 +39,14 @@ namespace ExchangeTrader.Caching.Redis
 
             var redisValue = JsonSerializer.SerializeToUtf8Bytes("Test");
 
-            _cache.Setup(x => x.StringGetAsync(It.IsAny<RedisKey>(), It.IsAny<CommandFlags>())).ReturnsAsync(()=> redisValue);
+            _cache.Setup(x => x.StringGetAsync(It.IsAny<RedisKey>(), It.IsAny<CommandFlags>())).ReturnsAsync(() => redisValue);
             _redisCon.Setup(x => x.GetDatabase(It.IsAny<int>(), It.IsAny<object?>())).Returns(_cache.Object);
             Func<Task<string>> func = GetKey;
             Task<string> GetKey() { return Task.FromResult("Test"); }
 
             //Act
             var cacheService = new RedisCacheService(_redisCon.Object);
-            var result = await cacheService.GetOrAddAsync<string>(key, GetKey, expireTime, CancellationToken.None);
+            var result = await cacheService.GetOrAddAsync(key, GetKey, expireTime, CancellationToken.None);
             //Assert
             _cache.Verify(x => x.StringGetAsync(It.IsAny<RedisKey>(), It.IsAny<CommandFlags>()), Times.Once());
             Assert.Equal("Test", result);
@@ -63,19 +62,19 @@ namespace ExchangeTrader.Caching.Redis
             var redisValue = JsonSerializer.SerializeToUtf8Bytes("Test");
 
             _cache.Setup(x => x.StringGetAsync(It.IsAny<RedisKey>(), It.IsAny<CommandFlags>())).ReturnsAsync(() => RedisValue.Null);
-            _cache.Setup(x => x.StringSetAsync(It.IsAny<RedisKey>(), 
-                It.IsAny<RedisValue>(), 
-                It.IsAny<TimeSpan?>(), 
-                It.IsAny<bool>(), 
-                It.IsAny<When>(), 
-                It.IsAny<CommandFlags>())).ReturnsAsync(()=> true);
+            _cache.Setup(x => x.StringSetAsync(It.IsAny<RedisKey>(),
+                It.IsAny<RedisValue>(),
+                It.IsAny<TimeSpan?>(),
+                It.IsAny<bool>(),
+                It.IsAny<When>(),
+                It.IsAny<CommandFlags>())).ReturnsAsync(() => true);
             _redisCon.Setup(x => x.GetDatabase(It.IsAny<int>(), It.IsAny<object?>())).Returns(_cache.Object);
             Func<Task<string>> func = GetKey;
             Task<string> GetKey() { return Task.FromResult("Test"); }
 
             //Act
             var cacheService = new RedisCacheService(_redisCon.Object);
-            var result = await cacheService.GetOrAddAsync<string>(key, GetKey, expireTime, CancellationToken.None);
+            var result = await cacheService.GetOrAddAsync(key, GetKey, expireTime, CancellationToken.None);
             //Assert
             _cache.Verify(x => x.StringGetAsync(It.IsAny<RedisKey>(), It.IsAny<CommandFlags>()), Times.Once());
             Assert.Equal("Test", result);
@@ -88,9 +87,9 @@ namespace ExchangeTrader.Caching.Redis
             var key = Guid.NewGuid().ToString();
             var redisValue = "Test";
 
-            _cache.Setup(x => x.StringGetAsync(It.IsAny<RedisKey>(), It.IsAny<CommandFlags>())).ReturnsAsync(() => redisValue);            
+            _cache.Setup(x => x.StringGetAsync(It.IsAny<RedisKey>(), It.IsAny<CommandFlags>())).ReturnsAsync(() => redisValue);
             _redisCon.Setup(x => x.GetDatabase(It.IsAny<int>(), It.IsAny<object?>())).Returns(_cache.Object);
-            
+
             //Act
             var cacheService = new RedisCacheService(_redisCon.Object);
             var result = await cacheService.GetValueAsync(key, CancellationToken.None);
@@ -138,7 +137,7 @@ namespace ExchangeTrader.Caching.Redis
 
             //Act
             var cacheService = new RedisCacheService(_redisCon.Object);
-            var result = cacheService.GetOrAdd<string>(key, GetKey, expireTime, CancellationToken.None);
+            var result = cacheService.GetOrAdd(key, GetKey, expireTime, CancellationToken.None);
             //Assert
             _cache.Verify(x => x.StringGet(It.IsAny<RedisKey>(), It.IsAny<CommandFlags>()), Times.Once());
             Assert.Equal("Test", result);
@@ -166,7 +165,7 @@ namespace ExchangeTrader.Caching.Redis
 
             //Act
             var cacheService = new RedisCacheService(_redisCon.Object);
-            var result = cacheService.GetOrAdd<string>(key, GetKey, expireTime, CancellationToken.None);
+            var result = cacheService.GetOrAdd(key, GetKey, expireTime, CancellationToken.None);
             //Assert
             _cache.Verify(x => x.StringGet(It.IsAny<RedisKey>(), It.IsAny<CommandFlags>()), Times.Once());
             Assert.Equal("Test", result);

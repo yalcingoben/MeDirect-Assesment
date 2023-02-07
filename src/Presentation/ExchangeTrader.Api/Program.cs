@@ -1,15 +1,14 @@
+using AspNetCoreRateLimit;
+using ExchangeTrader.Api.Extensions;
 using ExchangeTrader.Api.Filters;
 using ExchangeTrader.Api.Middlewares;
 using ExchangeTrader.App;
 using ExchangeTrader.App.Abstractions.Exchange.Configurations;
+using ExchangeTrader.App.Abstractions.Exchange.Enums;
 using ExchangeTrader.Caching.Redis.DependencyInjection;
+using ExchangeTrader.Integration.ExchangeRatesApi.DependencyInjection;
 using ExchangeTrader.Integration.Fixer.DependencyInjection;
 using Serilog;
-using ExchangeTrader.App.Abstractions.Exchange.Enums;
-using ExchangeTrader.Integration.ExchangeRatesApi.DependencyInjection;
-using Microsoft.AspNetCore.Mvc;
-using ExchangeTrader.Api.Extensions;
-using AspNetCoreRateLimit;
 
 var builder = WebApplication.CreateBuilder(args);
 

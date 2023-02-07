@@ -3,7 +3,7 @@ using ExchangeTrader.Integration.Fixer.Models;
 using Moq;
 using System.Text.Json;
 
-namespace ExchangeTrader.Integration.Fixer
+namespace ExchangeTrader.Integration.Fixer.Tests
 {
     public class FixerExchangeServiceTest
     {

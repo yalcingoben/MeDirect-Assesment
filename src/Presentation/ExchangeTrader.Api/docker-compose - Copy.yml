@@ -1,0 +1,27 @@
+﻿version: '3.6'
+
+services:
+  my-mongodb:
+    image: mongo:latest
+    container_name: my-mongodb
+    ports:
+      - 27017:27017
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: 123456
+        MONGO_INITDB_DATABASE: logs
+    volumes:
+    # seeding scripts
+      - ./mongo-entrypoint:/docker-entrypoint-initdb.d
+      # named volumes
+      - mongodb:/data/db
+    networks:
+      - mongo_net
+    
+volumes:
+  # default dir on Ubuntu: /var/lib/docker/volumes
+  mongodb:
+
+networks:
+  mongo_net:
+    driver: bridge

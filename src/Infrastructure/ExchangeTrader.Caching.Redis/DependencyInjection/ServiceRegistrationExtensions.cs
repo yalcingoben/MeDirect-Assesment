@@ -1,5 +1,4 @@
 ﻿using ExchangeTrader.App.Abstractions.Caching;
-using ExchangeTrader.Redis;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StackExchange.Redis;

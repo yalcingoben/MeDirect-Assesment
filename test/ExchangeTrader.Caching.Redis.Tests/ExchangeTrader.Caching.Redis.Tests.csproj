@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Infrastructure\ExchangeTrader.Caching.Redis\ExchangeTrader.Caching.Redis.csproj" />
     <ProjectReference Include="..\..\src\Infrastructure\ExchangeTrader.Redis\ExchangeTrader.Caching.Redis.csproj" />
   </ItemGroup>
 

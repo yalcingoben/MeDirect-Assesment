@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Infrastructure\ExchangeTrader.Infrastructure\ExchangeTrader.Integration.Fixer.csproj" />
+    <ProjectReference Include="..\..\src\Infrastructure\ExchangeTrader.Integration.Fixer\ExchangeTrader.Integration.Fixer.csproj" />
   </ItemGroup>
 
 </Project>

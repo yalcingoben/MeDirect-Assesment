@@ -2,7 +2,7 @@
 using StackExchange.Redis;
 using System.Text.Json;
 
-namespace ExchangeTrader.Redis
+namespace ExchangeTrader.Caching.Redis
 {
     public class RedisCacheService : ICacheService
     {
@@ -18,7 +18,7 @@ namespace ExchangeTrader.Redis
         public async Task Clear(string key, CancellationToken cancellationToken)
         {
             await _cache.KeyDeleteAsync(key);
-        }        
+        }
 
         public async Task<T> GetOrAddAsync<T>(string key, Func<Task<T>> action, TimeSpan? expireTime, CancellationToken cancellationToken) where T : class
         {
