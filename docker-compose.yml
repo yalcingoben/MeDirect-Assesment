@@ -1,0 +1,44 @@
+﻿version: '3.7'
+
+services:
+  web:
+    image: myapp:latest
+    container_name: app
+    depends_on:
+      - "redis_image"
+      - "mongodb_image"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9000:80"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    networks:
+      - medirect
+
+  redis_image:
+    image: redis
+    container_name: cache
+    ports:
+      - "6379:6379"
+    networks:
+      - medirect
+
+  mongodb_image:
+    image: mongo:latest
+    container_name: db
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+    networks:
+      - medirect
+
+volumes:
+  mongodb_data_container:
+
+networks:
+  medirect:
+    external: true
+
