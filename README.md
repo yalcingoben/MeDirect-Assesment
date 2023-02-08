@@ -24,9 +24,9 @@ API Keys are stored in the **appSettings.Development.json** file. It might store
 
 # Features
 
-1. Fixer and ExchangeRateAPI integration completed. You can do it from **appSettings.Development.json** if you want to change it.
+1. Fixer and ExchangeRateAPI integrations are completed. You can change it from **appSettings.Development.json** whichever you want to use.
 2. Redis is used for Caching.
 3. MongoDB is used for Exception Logging and saving the Trading History.
-4. Rate Limiting feature is completed. You can reach the **Rate Limiting** node from **appSettings.Development.json**, if you want to change the RateLimiting parameters.
+4. Rate Limiting feature is completed. You can reach the **Rate Limiting** node from **appSettings.Development.json**, if you need to adjust the RateLimiting parameters.
 5. Unit test has been written for all projects.
 
